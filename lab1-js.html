@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CALCULATOR</title>
+
+	<style type="text/css">
+		body{
+			margin-top: 100px;
+			text-align: center;
+			background-color: #112B3C;
+			color: #EFEFEF;
+		}
+
+		.p{
+			color:#EFEFEF ;
+    		font-size: medium;
+		}
+
+		.container
+    	{
+    		font-family: sans-serif;
+      		font-weight: lighter;
+      		font-size: medium;
+      		background-color:#205375;
+      		color: #EFEFEF;
+      		padding: 3%;
+      		border-radius: 10px;
+      		margin: 0 auto;
+      		width: 400px;
+      		border-style: solid;
+      		border-color: #F66B0E;
+    	}
+
+    	.heading
+    	{
+    		font-family: sans-serif;
+    		font-weight: lighter;
+      		font-size: xx-large;
+    	}
+
+    	button{
+    		background-color: #F66B0E ;
+    		color:#EFEFEF ;
+    		font-size: medium;
+    		border-radius: 10px;
+    	}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="heading">
+    	<p><center>CALCULATOR</center></p>
+  	</div>
+
+
+	<div class="container">
+		<br>
+	<form>
+		<label for="v1">NUMBER 1 :&nbsp</label>
+		<input type="text" id="v1"><br><br>
+		<label for="name">NUMBER 2 :&nbsp</label>
+		<input type="text" id="v2"><br><br>
+		</div>
+		<br>
+		<div class="container">
+		<label for="name">Select the operator :&nbsp</label>
+			<select id="opp">
+				<option value="add">ADD</option>
+				<option value="sub">SUB</option>
+				<option value="div">DIVIDE</option>
+				<option value="mul">MULTIPLY</option>
+			</select><br><br><br>
+		<button type="button" onclick = "calc()"> CALCULATE </button><br><br>
+		</div>
+	</form>
+	
+	<br>
+	<div class="container">
+	<h4>Result</h4>
+	<div id="result"></div></div>
+
+	<script type="text/javascript">
+		function calc(){
+			var a = parseInt(document.querySelector("#v1").value);
+			var b = parseInt(document.querySelector("#v2").value);
+			var c = document.querySelector("#opp").value;
+			var calculate;
+
+			if (c == 'add') {
+				calculate = a + b;
+			}
+			else if (c == 'sub'){
+
+				calculate = a - b;
+			}
+			else if (c == 'div'){
+
+				calculate = a / b;
+			}
+			else if (c == 'mul'){
+
+				calculate = a * b;
+			}
+
+			// console.log(calculate);
+
+			document.querySelector("#result").innerHTML = calculate;
+
+		}
+	</script>	
+</body>
+</html>

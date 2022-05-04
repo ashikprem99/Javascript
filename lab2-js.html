@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="us-en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	<title>Form Validation</title>
+	<style>
+		body{
+			background-color: #f8f9fa;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="container col-md-6 mt-5 ">
+				<h1 class="text-center text-#343a40">Sign Up</h1>
+				<form  action="#"  onsubmit="return formValidation()" method="post" >
+  					<div class="form-row mb-5">
+    					<div class="form-group col-md-6">
+      						<label for="name">Name</label>
+      						<input type="text" class="form-control" id="name"  placeholder="Enter Your Name">
+      						<div id="nameError" class="text-danger"></div>
+    					</div>
+    					<div class="form-group col-md-6">
+      						<label for="phno">Ph.No</label>
+      						<input type="tel" class="form-control" id="phno"  placeholder="Enter Your Phone Number">
+      						<div id="phError" class="text-danger"></div>
+    					</div>
+  					</div>
+  					<div class="form-row mb-5">
+    					<div class="form-group col-md-6">
+      						<label for="email">Email</label>
+      						<input type="text" class="form-control" id="email"  placeholder="Enter Your Email">
+      						<div id="emailError" class="text-danger"></div>
+    					</div>
+    					<div class="form-group col-md-6">
+      						<label for="password">Password</label>
+      						<input type="password" class="form-control" id="password"  placeholder="Enter Your Password">
+      						<div id="passError" class="text-danger"></div>
+    					</div>
+  					</div>
+
+  					<button type="submit" class="btn btn-outline-dark btn-block" >Sign Up</button>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script>
+		function formValidation() {
+
+
+			var name = document.getElementById('name').value;
+			var phNo = document.getElementById('phno').value;
+			var email = document.getElementById('email').value;
+			var password = document.getElementById('password').value;
+			var checkNum = name.match(/\d+/g);
+
+
+
+
+			if(name==""){
+				document.getElementById("nameError").innerHTML="This field is required";
+				return false;
+			}else if(name.length < 3){
+				document.getElementById("nameError").innerHTML="please enter more than 3 charcters";
+				return false
+			}else if(checkNum != null){
+				document.getElementById("nameError").innerHTML="Please enter valid name";
+				return false
+			}else{
+				document.getElementById("nameError").innerHTML="";
+
+			}
+
+
+			if(phNo==""){
+				document.getElementById("phError").innerHTML="This field is required";
+				return false;
+			}else if(isNaN(Number(phNo))){
+				document.getElementById("phError").innerHTML="Enter valid number";
+				return false;
+			}else if(phNo.length < 10 || phNo.length > 15){
+				document.getElementById("phError").innerHTML="enter must min 10 & max 15";
+				return false;
+			}else{
+				document.getElementById("phError").innerHTML="";
+
+			}
+
+
+			if(email==""){
+				document.getElementById("emailError").innerHTML="This field is required";
+				return false;
+			}else if(email.indexOf('@') <= 0 ){
+				document.getElementById("emailError").innerHTML="please enter valid email";
+				return false;
+			}else if((email.charAt(email.length-4)!='.')&&(email.charAt(email.length-3)!='.')){
+				document.getElementById("emailError").innerHTML="please enter valid email";
+				return false;
+
+			}else{
+				document.getElementById("emailError").innerHTML="";
+
+			}
+
+
+			if(password==""){
+				document.getElementById("passError").innerHTML="This field is required";
+				return false;
+			}else if(password.length < 6){
+				document.getElementById("passError").innerHTML="please enter more than six characters";
+				return false;
+			}else{
+				document.getElementById("passError").innerHTML="";
+
+			}
+			return true;	
+		}
+	</script>
+</body>
+</html> 
